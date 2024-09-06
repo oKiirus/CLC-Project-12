@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmwxh2bf7fmpj"]
+
+[ext_resource type="PackedScene" uid="uid://bxryygjifk6x8" path="res://scenes/mraw.tscn" id="1_gm21c"]
+[ext_resource type="Texture2D" uid="uid://c4fwspwgvwme8" path="res://Images/icon.svg" id="2_yidro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lm6pn"]
+size = Vector2(1152, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5com"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yidro")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cabin" type="Node2D"]
+
+[node name="Mraw" parent="." instance=ExtResource("1_gm21c")]
+position = Vector2(533, 584)
+walk_acceleration = null
+max_walk_speed = null
+walk_turn_boost = null
+run_acceleration = null
+max_run_speed = null
+run_turn_boost = null
+jump_power = null
+max_jump_power = null
+jump_charge_speed = null
+gravity = null
+air_friction = null
+ground_friction = null
+terminal_velocity = null
+debug_speed = null
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Walls" type="RigidBody2D" parent="Node"]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Walls"]
+position = Vector2(576, 638)
+shape = SubResource("RectangleShape2D_lm6pn")
+
+[node name="Floor" type="AnimatedSprite2D" parent="Node/Walls/CollisionShape2D"]
+scale = Vector2(8.99924, -0.199736)
+sprite_frames = SubResource("SpriteFrames_a5com")
